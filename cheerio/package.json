@@ -1,0 +1,25 @@
+{
+  "name": "scraping-cheerio",
+  "version": "1.0.0",
+  "description": "Excercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "scraping",
+    "cheerio",
+    "javascript",
+    "webscraping"
+  ],
+  "author": "icao",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "fs-extra": "^10.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
