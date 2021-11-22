@@ -11,14 +11,22 @@ async function scraping() {
   const response = await axios.get(URL)
   const $ = cheerio.load(response.data)
 
-  fileConfiguration.write(`export const workbench = { \n`)
+  fileConfiguration.write(`const workbench = { \n`)
 
-  $('#main .body ul li code').each((index, element) => {
-    const parameter = $(element).text()
-    fileConfiguration.write(`\t'${parameter}': interpolation,\n`)
-  })
+  // 580 REGLAS EN TOTAL: 21 NOVIEMBRE 2021
+  // SE REVISARN UNA A UNA
+  // se repite: 'editorBracketPairGuide.background1'
+  // por lo que son 579 reglas
 
-  fileConfiguration.write(`} \n`)
+  $('#main .body ul li')
+    .find('code:first-child')
+    .each((index, element) => {
+      const parameter = $(element).text()
+      console.log(parameter) // FIXME: VALIDAR SI PUEDO ITERARP IMERO EL UL Y DESPUES EL LI PARA ENCPONTRAR EL PRIMER CODE DE CADA LI Y AS IEVITAR METER BASURA
+      fileConfiguration.write(`\t'${parameter}': null,\n`)
+    })
+
+  fileConfiguration.write(`} \n module.exports = workbench`)
 }
 
 scraping()
